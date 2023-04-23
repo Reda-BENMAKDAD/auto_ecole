@@ -20,7 +20,9 @@ class clientFactory extends Factory
         'num_cin' => $this->faker->unique()->randomNumber(8),
         'nom' => $this->faker->lastName(),
         'prenom' => $this->faker->firstName(),
-        'date_naiss' => $this->faker->date(),
+        // la date de naissance devrait avoir une valeur de sorte que l'âge du client soit supérieur à 18 ans
+        'date_naiss' => $this->faker->dateTimeBetween('-70 years', '-18 years'),
+        'lieu_naiss' => $this->faker->city(),
         'adresse' => $this->faker->address(),
         'nationalite' => $this->faker->country(),
         'num_tel' => $this->faker->phoneNumber(),
