@@ -13,6 +13,7 @@ class Client extends Model
         'nom',
         'prenom',
         'date_naiss',
+        'lieu_naiss',
         'addresse',
         'nationalite',
         'num_tel',
