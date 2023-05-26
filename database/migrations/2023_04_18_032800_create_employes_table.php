@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string("num_tel");
             $table->string("email");
             $table->string("sexe");
-            $table->foreignId("idRole");
-            $table->foreign("idRole")->references("id")->on("roles")->onDelete("cascade")->onUpdate("cascade");
             $table->float("salaire");
             $table->timestamps();
         });

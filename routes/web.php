@@ -30,4 +30,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('manager', function () {
+    return "cette page est réservée aux managers";
+})->middleware(['auth', 'role:manager']);
+
+Route::get('secretaire', function () {
+    return "cette page est réservée aux secretaires";
+})->middleware(['auth', 'role:secretaire']);
+
+Route::get('moniteur', function () {
+    return "cette page est réservée aux moniteurs";
+})->middleware(['auth', 'role:moniteur']);
+
 require __DIR__.'/auth.php';

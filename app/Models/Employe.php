@@ -18,7 +18,6 @@ class Employe extends Model
         'num_tel',
         'email',
         'sexe',
-        'idRole',
         'salaire'
     ];
     use HasFactory;
