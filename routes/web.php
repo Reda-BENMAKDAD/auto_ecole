@@ -26,20 +26,10 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware(['role:manager']);
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware(['role:manager']);
 });
 
-Route::get('manager', function () {
-    return "cette page est réservée aux managers";
-})->middleware(['auth', 'role:manager']);
 
-Route::get('secretaire', function () {
-    return "cette page est réservée aux secretaires";
-})->middleware(['auth', 'role:secretaire']);
-
-Route::get('moniteur', function () {
-    return "cette page est réservée aux moniteurs";
-})->middleware(['auth', 'role:moniteur']);
 
 require __DIR__.'/auth.php';
