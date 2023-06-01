@@ -19,13 +19,13 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" :disabled="!Auth::user()->hasRole('manager')" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" :disabled="!Auth::user()->hasRole('manager')" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -46,9 +46,9 @@
                 </div>
             @endif
         </div>
-
+        @if(Auth::user()->hasRole('manager'))
         <div class="flex items-center gap-4">
-            <x-primary-button :disabled="!Auth::user()->hasRole('manager')" >{{ __('Save') }}</x-primary-button>
+            <x-primary-button :disabled="!Auth::user()->hasRole('manager')"  cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}">save</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -60,5 +60,6 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+        @endif
     </form>
 </section>
