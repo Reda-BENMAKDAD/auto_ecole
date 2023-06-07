@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        
+        'id_employe'
     ];
 
     /**
@@ -43,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function employe()
+    {
+        return $this->belongsTo(Employe::class, 'id_employe');
+    }
+
+    public function getEmployeAttribute()
+    {
+        return $this->employe()->first();
+    }
 }

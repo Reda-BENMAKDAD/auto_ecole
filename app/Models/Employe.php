@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employe extends Model
 {
@@ -13,6 +13,7 @@ class Employe extends Model
         'nom',
         'prenom',
         'date_naiss',
+        'lieu_naiss',
         'addresse',
         'nationalite',
         'num_tel',
@@ -29,6 +30,9 @@ class Employe extends Model
     public function payements()
     {
         return $this->hasMany(Payement::class);
+    }
+    public function user(){
+        return $this->hasOne(User::class);
     }
 
 }
