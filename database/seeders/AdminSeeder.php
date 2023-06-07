@@ -18,8 +18,8 @@ class AdminSeeder extends Seeder
         # ces utilisateurs sont créés pour tester l'application
         # et ne doivent pas être laissé en production
          User::create([
-            'name' => 'admin',
-            'email' => 'admin@aeb.com',
+            'name' => 'manager',
+            'email' => 'manager@aeb.com',
             'password' => Hash::make("password"),
         ])
         ->assignRole('manager');
