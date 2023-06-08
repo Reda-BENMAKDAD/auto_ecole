@@ -15,7 +15,18 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'mygold': "#F7BF4F",
+                mygold: {
+                    DEFAULT: "#f7bf4f",
+                    100: "#fef9ed",
+                    200: "#fdf2dc",
+                    300: "#fdecca",
+                    400: "#fce5b9",
+                    500: "#fbdfa7",
+                    600: "#fad995",
+                    700: "#f9d284",
+                    800: "#f9cc72",
+                    900: "#f7bf4f"   
+                }
             }
         },
     },
