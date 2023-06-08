@@ -28,6 +28,11 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        $new_employe_info = ['nom'=> $request->nom, 'prenom' => $request->name, 'email'=> $request->email, 'date_naiss' => $request->date_naiss, 'sexe' => $request->sexe, 'salaire' => substr($request->salaire, 0, -2)];
+        $request->user()->employe()->update($new_employe_info);
+        
+        
+
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
