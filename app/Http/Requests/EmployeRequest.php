@@ -22,7 +22,17 @@ class EmployeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'num_cin' => ['required', 'string', 'max:255'],
+        'nom' => ['required', 'string', 'max:255'],
+        'prenom' => ['required', 'string', 'max:255'],
+        'date_naiss' => ['required', 'date'],
+        'lieu_naiss' => ['required', 'string', 'max:255'],
+        'addresse' => ['required', 'string',],
+        'nationalite' => ['required', 'string', 'max:255'],
+        'num_tel' => ['required', 'string',],
+        'email' => ['required', 'email', 'max:255'],
+        'sexe' => ['required', 'string', 'max:1', 'in:H,F'],
+        'salaire' => ['required', 'regex:/^\d+(\.\d+)?dh$/']
         ];
     }
 }
