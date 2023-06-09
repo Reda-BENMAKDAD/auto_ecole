@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeRequest;
 use Illuminate\Http\Request;
 use App\Models\Employe;
 
@@ -15,21 +16,19 @@ class EmployeController extends Controller
         $employes = Employe::all();
         return view('employe.index', compact('employes'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
-        //
+        return view('employe.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmployeRequest $request)
     {
-        //
+        
+        
     }
 
     /**
