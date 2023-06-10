@@ -6,7 +6,7 @@
     </x-slot>
     <div class="py-12">
         <div class="rounded-lg bg-mygold-600 max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-mygold-600 overflow-hidden shadow-sm sm:rounded-lg p-10">
+            <div class="bg-mygold-600  overflow-hidden shadow-sm sm:rounded-lg p-10">
                 <div class="pb-6 pl-6 pr-6 text-gray-900 text-xl">
                     {{ __("Que voulez-vous faire ?") }}
                 </div>
