@@ -22,9 +22,13 @@ return new class extends Migration
             $table->text("adresse");
             $table->string("nationalite");
             $table->string("num_tel");
-            $table->string("email");
+            $table->string("email")->nullable();
             $table->string("sexe");
             $table->float("salaire");
+            $table->string("poste");
+            $table->string("scan_cv")->nullable();
+            $table->string("scan_cin")->nullable();
+            $table->string("photo")->nullable();
             $table->timestamps();
         });
     }

@@ -14,12 +14,17 @@ class Employe extends Model
         'prenom',
         'date_naiss',
         'lieu_naiss',
-        'addresse',
+        'adresse',
         'nationalite',
         'num_tel',
         'email',
         'sexe',
-        'salaire'
+        'salaire',
+        'poste', 
+        'scan_cv',
+        'scan_cin',
+        'photo'
+
     ];
     use HasFactory;
 

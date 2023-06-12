@@ -30,6 +30,7 @@ class AdminSeeder extends Seeder
             'email' => 'reda@aeb.com',
             'sexe' => 'H',
             'salaire' => 2000,
+            'poste' => 'manager',
 
         ]);
          User::create([
@@ -52,6 +53,7 @@ class AdminSeeder extends Seeder
             'email' => 'asmaa@aeb.com',
             'sexe' => 'F',
             'salaire' => 2000,
+            'poste' => 'secretaire',
         ]);
         User::create([
             'name' => 'asmaa',
@@ -73,6 +75,7 @@ class AdminSeeder extends Seeder
             'email' => 'aziz@aeb.com',
             'sexe' => 'H',
             'salaire' => 2000,
+            'poste' => 'moniteur',
         ]);
         User::create([
             'name' => 'aziz',
