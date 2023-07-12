@@ -21,6 +21,7 @@ class Employe extends Model
         'sexe',
         'salaire',
         'poste', 
+        'docs_uuid',
         'scan_cv',
         'scan_cin',
         'photo'

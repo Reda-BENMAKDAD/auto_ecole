@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DocumentController;
+use App\Models\Employe;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
 
 
 Route::get('/documents/{filename}', [DocumentController::class, 'show'])->name('documents.show');
+
+Route::get("test", function(){
+    dd(Employe::find(4));
+
+});
 
 
 require __DIR__.'/auth.php';

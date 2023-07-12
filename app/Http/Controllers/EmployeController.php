@@ -36,26 +36,30 @@ class EmployeController extends Controller
         $EmployeInfo = $request->validated();
         $EmployeInfo['poste'] = Role::findOrFail($EmployeInfo['poste'])->name; // on récupère le nom du poste avec son id à partir de la table des roles
         $employe = Employe::create($EmployeInfo);
-
-        /* on préfix les noms des fichier de l'utilisateur par son id et ensuite les stocker (si ils sont existants) */
+        dd($employe);
+        /* stockage des fichiers si il y'en a*/
+        /* verification si le dossier de stockage exist */ 
+        if (!Storage::exists("documents/$employe->docs_uuid")) {
+            Storage::makeDirectory("documents/$employe->docs_uuid");
+        } 
         if ($request->hasFile('scan_cin')) {
         $scanCin = $request->file('scan_cin');
-        $scanCinFileName = $employe->id . '_' . $scanCin->getClientOriginalName();
-        $scanCin->storeAs("documents/$scanCinFileName");
+        $scanCinFileName = $scanCin->getClientOriginalName();
+        $scanCin->storeAs("documents/$employe->docs_uuid", $scanCinFileName);
         $employe->scan_cin = $scanCinFileName;
         }
  
         if ($request->hasFile('photo')){
         $photo = $request->file('photo');
-        $photoFileName = $employe->id . '_' . $photo->getClientOriginalName();
-        $photo->storeAs("documents/$photoFileName");
+        $photoFileName = $photo->getClientOriginalName();
+        $photo->storeAs("documents/$employe->docs_uuid", "$photoFileName");
         $employe->photo = $photoFileName;
         }
 
         if ($request->hasFile('scan_cv')){
         $scanCv = $request->file('scan_cv');
-        $scanCvFileName = $employe->id . '_' . $scanCv->getClientOriginalName();
-        $scanCv->storeAs("documents/$scanCvFileName");
+        $scanCvFileName = $scanCv->getClientOriginalName();
+        $scanCv->storeAs("documents/$employe->docs_uuid", "$scanCvFileName");
         $employe->scan_cv = $scanCvFileName;
         }
         $employe->save();

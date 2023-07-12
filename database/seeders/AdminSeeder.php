@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Employe;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Employe;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use PhpParser\Node\Expr\Assign;
 
 class AdminSeeder extends Seeder
 {
