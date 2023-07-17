@@ -98,4 +98,55 @@
             </div>
           </div>
         </div>
+        <div class="py-12">
+          <div class="rounded-lg bg-white max-w-7xl mx-auto sm:px-6 lg:px-8 p-10">
+            <div class="px-4 pb-4 sm:px-0">
+              <h3 class="font-semibold leading-7 text-xl text-gray-900">supprimer cet employé ?</h3>
+            </div>
+            <x-danger-button
+               x-data=""
+               x-on:click.prevent="$dispatch('open-modal', 'confirm-employe-deletion')"
+            >{{ __('supprimer') }}</x-danger-button>
+
+            <x-modal name="confirm-employe-deletion"  :show="$errors->employeDeletion->isNotEmpty()" focusable>
+
+              <form method="post" action="{{ route('employes.destroy', $employe->id) }}" class="p-6">
+                @csrf
+                @method('delete')
+    
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('êtes-vous sûr de vouloir supprimer cet employé ?') }}
+                </h2>
+    
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ __('Attention! une fois cet employé supprimé, toutes les ressources et les données relatives à celui-ci seront définitivement effacées. Veuillez entrer votre mot-de-passe pour confirmer que vous souhaitez supprimer cet employé de manière permanente.') }}
+                </p>
+    
+                <div class="mt-6">
+                    <x-input-label for="password" value="{{ __('mot-de-passe') }}" class="sr-only" />
+    
+                    <x-text-input
+                        id="password"
+                        name="password"
+                        type="password"
+                        class="mt-1 block w-3/4"
+                        placeholder="{{ __('mot-de-passe') }}"
+                    />
+    
+                    <x-input-error :messages="$errors->employeDeletion->get('password')" class="mt-2" />
+                  </div>
+    
+                <div class="mt-6 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        {{ __('Annuler') }}
+                    </x-secondary-button>
+    
+                    <x-danger-button class="ml-3">
+                        {{ __('Supprimer l\'employé') }}
+                    </x-danger-button>
+                </div>
+            </form>
+            </x-modal>
+          </div>
+        </div>
 </x-app-layout>

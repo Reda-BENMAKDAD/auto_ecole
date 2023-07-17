@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Employe;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\EmployeRequest;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeController extends Controller
@@ -36,7 +37,6 @@ class EmployeController extends Controller
         $EmployeInfo = $request->validated();
         $EmployeInfo['poste'] = Role::findOrFail($EmployeInfo['poste'])->name; // on récupère le nom du poste avec son id à partir de la table des roles
         $employe = Employe::create($EmployeInfo);
-        dd($employe);
         /* stockage des fichiers si il y'en a*/
         /* verification si le dossier de stockage exist */ 
         if (!Storage::exists("documents/$employe->docs_uuid")) {
@@ -112,9 +112,14 @@ class EmployeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
+        
+        $request->validateWithBag('employeDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
         $employe = Employe::findOrFail($id);
+        $employe->user()->delete();
         $employe->delete();
         return redirect()->route('employes.index');
     }
