@@ -18,6 +18,5 @@ class Vehicule extends Model
         return $this->hasMany(Cours::class);
     }
 
-
     use HasFactory;
 }

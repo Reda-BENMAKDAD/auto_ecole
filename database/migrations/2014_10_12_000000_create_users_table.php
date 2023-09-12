@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->foreignId("id_employe");
+            $table->foreign("id_employe")->references("id")->on("employes")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
