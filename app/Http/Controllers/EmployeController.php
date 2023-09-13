@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Employe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -36,30 +37,38 @@ class EmployeController extends Controller
         /* création de l'employé */
         $EmployeInfo = $request->validated();
         $EmployeInfo['poste'] = Role::findOrFail($EmployeInfo['poste'])->name; // on récupère le nom du poste avec son id à partir de la table des roles
+        $EmployeInfo['docs_uuid'] = (string) Str::uuid();
         $employe = Employe::create($EmployeInfo);
-        /* stockage des fichiers si il y'en a*/
-        /* verification si le dossier de stockage exist */ 
-        if (!Storage::exists("documents/$employe->docs_uuid")) {
-            Storage::makeDirectory("documents/$employe->docs_uuid");
+        
+        /* on stock les fichiers si il y'en a*/
+        /* verification si le dossier de stockage génerale "documets" exist
+         * si non on le crée
+        */ 
+        
+        if (!Storage::exists("documents")) {
+            Storage::makeDirectory("documents");
         } 
+        /* création du dossier de stockage de fichier personel de l'enployé qui a comme nom son docs_uuid*/ 
+        Storage::makeDirectory("documents\\$employe->docs_uuid");
+
         if ($request->hasFile('scan_cin')) {
         $scanCin = $request->file('scan_cin');
         $scanCinFileName = $scanCin->getClientOriginalName();
-        $scanCin->storeAs("documents/$employe->docs_uuid", $scanCinFileName);
+        $scanCin->storeAs("documents\\$employe->docs_uuid", $scanCinFileName);
         $employe->scan_cin = $scanCinFileName;
         }
  
         if ($request->hasFile('photo')){
         $photo = $request->file('photo');
         $photoFileName = $photo->getClientOriginalName();
-        $photo->storeAs("documents/$employe->docs_uuid", "$photoFileName");
+        $photo->storeAs("documents\\$employe->docs_uuid", "$photoFileName");
         $employe->photo = $photoFileName;
         }
 
         if ($request->hasFile('scan_cv')){
         $scanCv = $request->file('scan_cv');
         $scanCvFileName = $scanCv->getClientOriginalName();
-        $scanCv->storeAs("documents/$employe->docs_uuid", "$scanCvFileName");
+        $scanCv->storeAs("documents\\$employe->docs_uuid", "$scanCvFileName");
         $employe->scan_cv = $scanCvFileName;
         }
         $employe->save();
@@ -121,6 +130,8 @@ class EmployeController extends Controller
         $employe = Employe::findOrFail($id);
         $employe->user()->delete();
         $employe->delete();
+        /* il faut ajouter la suppression des fichiers relatifs a cet employé */
+
         return redirect()->route('employes.index');
     }
 }

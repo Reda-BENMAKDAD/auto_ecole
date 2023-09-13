@@ -66,7 +66,7 @@
                                 </svg>
                                 <div class="ml-4 flex min-w-0 flex-1 gap-2">
                                     <span class="truncate font-medium">{{ $employe->scan_cin }}</span>
-                                    <span class="flex-shrink-0 text-gray-400">4.5mb</span>
+                                    
                                 </div>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
@@ -82,7 +82,6 @@
                                 </svg>
                                 <div class="ml-4 flex min-w-0 flex-1 gap-2">
                                     <span class="truncate font-medium">{{ $employe->photo }}</span>
-                                    <span class="flex-shrink-0 text-gray-400">4.5mb</span>
                                 </div>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">

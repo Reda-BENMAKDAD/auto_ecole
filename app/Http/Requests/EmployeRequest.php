@@ -36,7 +36,7 @@ class EmployeRequest extends FormRequest
         'poste' => ['required', 'numeric', 'max:255'],
         'scan_cv' => ['nullable', 'file', 'mimes:pdf,doc,docx,odt,txt,png,jpg,jpeg'],
         'scan_cin' => ['nullable', 'file', 'mimes:pdf,doc,docx,odt,png,jpg,jpeg'],
-        'photo' => ['nullable', 'file', 'mimes:pdf,doc,docx,odt,txt,png,jpg,jpeg'],
+        'photo' => ['nullable', 'file', 'mimes:jpg,jpeg,webp,gif,png'],
         'password' => ['required', 'string', 'min:8'],
         'ConfirmPassword' => ['required', 'string', 'min:8', 'same:password']
         ];
@@ -80,7 +80,7 @@ class EmployeRequest extends FormRequest
             'photo.file' => 'Le champ Photo doit être un fichier',
             'scan_cv.mimes' => 'Le champ CV doit être un fichier de type pdf, doc, docx, odt, txt, png, jpg, jpeg',
             'scan_cin.mimes' => 'Le champ CIN doit être un fichier de type pdf, doc, docx, odt, txt, png, jpg, jpeg',
-            'photo.mimes' => 'Le champ Photo doit être un fichier de type pdf, doc, docx, odt, txt, png, jpg, jpeg',
+            'photo.mimes' => 'Le champ Photo doit être un fichier de type jpg, jpeg, webp, gif, png',
 
         ];
     }
