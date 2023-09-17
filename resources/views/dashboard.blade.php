@@ -12,18 +12,18 @@
                 </div>
                 <div class="relative w-100 h-100 grid grid-cols-3 gap-5">
                    @manager 
-                        <x-dashBoardLink url="{{ route('employes.index') }}" title="Gérer les employés" picture="employee.png"/>
-                        <x-dashBoardLink url="{{ route('employes.index') }}" title="Gérer les vehicules" picture="vehicles.png" />
+                        <x-dashboardLink url="{{ route('employes.index') }}" title="Gérer les employés" picture="employee.png"/>
+                        <x-dashboardLink url="{{ route('employes.index') }}" title="Gérer les vehicules" picture="vehicles.png" />
                    @endmanager
                    @secretaire 
-                        <x-dashBoardLink url="{{ route('employes.create') }}" title="Gérer les clients" picture="client.png" /> 
-                        <x-dashBoardLink url="{{ route('employes.edit', 1) }}" title="Encaisser un payement" picture="payement.png" />
-                        <x-dashBoardLink url="{{ route('employes.create') }}" title="Ajouter un cours" picture="cours.png" />
-                        <x-dashBoardLink url="{{ route('employes.edit', 1) }}" title="Gérer les employés" picture="client.png" />
+                        <x-dashboardLink url="{{ route('employes.create') }}" title="Gérer les clients" picture="client.png" /> 
+                        <x-dashboardLink url="{{ route('employes.edit', 1) }}" title="Encaisser un payement" picture="payement.png" />
+                        <x-dashboardLink url="{{ route('employes.create') }}" title="Ajouter un cours" picture="cours.png" />
+                        <x-dashboardLink url="{{ route('employes.edit', 1) }}" title="Gérer les employés" picture="client.png" />
                    @endsecretaire
                    @moniteur 
-                        <x-dashBoardLink url="{{ route('employes.index') }}" title="voir les clients" picture="client.png" />
-                        <x-dashBoardLink url="{{ route('employes.index') }}" title="voir les cours" picture="cours.png" />
+                        <x-dashboardLink url="{{ route('employes.index') }}" title="voir les clients" picture="client.png" />
+                        <x-dashboardLink url="{{ route('employes.index') }}" title="voir les cours" picture="cours.png" />
                    @endmoniteur
 
                    
