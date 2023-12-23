@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Spatie\Permission\Models\Role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -38,7 +39,7 @@ class Employe extends Model
         return $this->hasMany(Payement::class);
     }
     public function user(){
-        return $this->hasOne(User::class, 'id_employe');
+        return $this->hasOne(User::class);
     }
 
 }
