@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string("sexe");
             $table->float("salaire");
             $table->string("poste");
-            $table->uuid('docs_uuid')->default(DB::raw('(UUID())'));
+            $table->uuid('docs_uuid');
             $table->string("scan_cv")->nullable();
             $table->string("scan_cin")->nullable();
             $table->string("photo")->nullable();

@@ -30,6 +30,7 @@ class AdminSeeder extends Seeder
             'sexe' => 'H',
             'salaire' => 2000,
             'poste' => 'manager',
+            'docs_uuid' => (string) Str::uuid(),
 
         ]);
          User::create([
@@ -53,6 +54,7 @@ class AdminSeeder extends Seeder
             'sexe' => 'F',
             'salaire' => 2000,
             'poste' => 'secretaire',
+            'docs_uuid' => (string) Str::uuid(),
         ]);
         User::create([
             'name' => 'asmaa',
@@ -75,6 +77,7 @@ class AdminSeeder extends Seeder
             'sexe' => 'H',
             'salaire' => 2000,
             'poste' => 'moniteur',
+            'docs_uuid' => (string) Str::uuid(),
         ]);
         User::create([
             'name' => 'aziz',
