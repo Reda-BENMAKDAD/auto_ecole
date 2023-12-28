@@ -20,7 +20,7 @@
        
         <div>
             <x-input-label for="nom" :value="__('Nom')" />
-            <x-text-input id="nom" name="nom" type="text" class="mt-1 block w-full" :value="old('nom', Auth::user()->employe()->nom)" required autofocus autocomplete="nom" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
+            <x-text-input id="nom" name="nom" type="text" class="mt-1 block w-full" :value="old('nom', Auth::user()->employe->nom)" required autofocus autocomplete="nom" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
             <x-input-error class="mt-2" :messages="$errors->get('nom')" />
         </div>
 
@@ -56,19 +56,19 @@
 
         <div>
             <x-input-label for="date_naiss" :value="__('Date de naissance')" />
-            <x-text-input id="date_naiss" name="date_naiss" type="date" class="mt-1 block w-full" :value="old('date_naiss', Auth::user()->employe()->date_naiss)" required autofocus autocomplete="date_naiss" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
+            <x-text-input id="date_naiss" name="date_naiss" type="date" class="mt-1 block w-full" :value="old('date_naiss', Auth::user()->employe->date_naiss)" required autofocus autocomplete="date_naiss" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
             <x-input-error class="mt-2" :messages="$errors->get('date_naiss')" />
         </div>
 
         <div>
             <x-input-label for="salaire" :value="__('Sexe')" />
-            <x-text-input id="sexe" name="sexe" type="text" class="mt-1 block w-full" :value="old('sexe', Auth::user()->employe()->sexe)" required autofocus autocomplete="sexe" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
+            <x-text-input id="sexe" name="sexe" type="text" class="mt-1 block w-full" :value="old('sexe', Auth::user()->employe->sexe)" required autofocus autocomplete="sexe" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
             <x-input-error class="mt-2" :messages="$errors->get('sexe')" />
         </div>
         
         <div>
             <x-input-label for="salaire" :value="__('salaire')" />
-            <x-text-input id="salaire" name="salaire" type="text" class="mt-1 block w-full" :value="old('salaire', strval(Auth::user()->employe()->salaire) . 'dh')" required autofocus autocomplete="salaire" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
+            <x-text-input id="salaire" name="salaire" type="text" class="mt-1 block w-full" :value="old('salaire', strval(Auth::user()->employe->salaire) . 'dh')" required autofocus autocomplete="salaire" :disabled="!Auth::user()->hasRole('manager')" cursor="{{ Auth::user()->hasRole('manager') ? 'pointer' : 'not-allowed' }}"/>
             <x-input-error class="mt-2" :messages="$errors->get('salaire')" />
         </div>
 
