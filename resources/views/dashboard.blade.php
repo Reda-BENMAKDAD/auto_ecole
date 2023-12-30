@@ -1,11 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    <div class="py-12">
-        <div class="rounded-lg bg-slate-200 max-w-7xl mx-auto sm:px-6 lg:px-8">
+   
+    <div class="mt-[200px]">
+       
+        <div class="rounded-lg bg--200 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-200 overflow-hidden shadow-sm sm:rounded-lg p-10">
                 <div class="pb-6 pl-6 pr-6 text-gray-900 text-xl">
                     {{ __("Que voulez-vous faire ?") }}
@@ -17,7 +14,7 @@
                    @endmanager
                    @secretaire 
                         <x-dashboardLink url="{{ route('employes.create') }}" title="Gérer les clients" picture="client.png" /> 
-                        <x-dashboardLink url="{{ route('employes.edit', 1) }}" title="Encaisser un payement" picture="payement.png" />
+                        <x-dashboardLink url="{{ route('employes.edit', 1) }}" title="Encaisser un paiement" picture="payement.png" />
                         <x-dashboardLink url="{{ route('employes.create') }}" title="Ajouter un cours" picture="cours.png" />
                         <x-dashboardLink url="{{ route('employes.edit', 1) }}" title="Gérer les employés" picture="client.png" />
                    @endsecretaire

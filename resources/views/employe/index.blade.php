@@ -32,7 +32,7 @@
                             <div class="font-semibold text-left">num tel</div>
                           </th>
                           <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">salaire</div>
+                            <div class="font-semibold ">salaire <span class="lowercase">(dh)</span> </div>
                           </th>
                           <th class="p-2 whitespace-nowrap">
                             <div class="font-semibold text-left">actions</div>
@@ -44,11 +44,11 @@
                             <tr>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="flex items-center">
-                                <div class="font-medium text-gray-800">{{ $employe->nom }}</div>
+                                <div class="font-medium text-gray-800 uppercase">{{ $employe->nom }}</div>
                                 </div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
-                                <div class="text-left">{{ $employe->prenom }}</div>
+                                <div class="text-left capitalize">{{ $employe->prenom }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="text-left">{{ $employe->poste }}</div>
@@ -60,7 +60,7 @@
                                 <div class="text-left">{{ $employe->num_tel }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
-                                <div class="text-left font-medium text-green-500">{{ $employe->salaire }} dh</div>
+                                <div class="font-medium text-green-500 text-center">{{ $employe->salaire }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="text-left font-medium"><a class="font-medium text-mygold-900 dark:text-mygold-900 hover:underline"  href="{{ route('employes.show', $employe->id) }}">détails</a></div>

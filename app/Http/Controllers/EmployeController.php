@@ -42,7 +42,7 @@ class EmployeController extends Controller
         
         /* on stock les fichiers si il y'en a*/
         /* verification si le dossier de stockage génerale "documets" exist
-         * si non on le crée
+         * sinon on le crée
         */ 
         
         if (!Storage::exists("documents")) {
