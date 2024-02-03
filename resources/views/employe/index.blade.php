@@ -7,9 +7,10 @@
     <div class="py-12">
             <div class="h-full">
               <!-- Table -->
-              <div class="w-full max-w-4xl mx-auto bg-white shadow-lg border rounded-lg pb-10 border-gray-200 my-12">
-                <header class="px-5 py-4 border-b border-gray-100">
-                  <h2 class="font-semibold text-gray-800">Employés</h2>
+              <div class="w-full max-w-4xl mx-auto bg-white shadow-lg border rounded-lg pb-4 border-gray-200 my-12">
+                <header class="px-8 py-4 border-b border-gray-100">
+                  <h2 class="font-semibold text-gray-800 inline-block">Employés</h2>
+                 <x-nouveau-button />
                 </header>
                 <div class="p-3">
                   <div class="overflow-x-auto">

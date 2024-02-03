@@ -40,18 +40,16 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::post('/employes/create', [EmployeController::class, 'store'])->name('employes.store');
     Route::get('/employes/{id}', [EmployeController::class, 'show'])->name('employes.show');
     Route::get('/employes/{id}/edit', [EmployeController::class, 'edit'])->name('employes.edit');
-    Route::patch('/employes/{id}', [EmployeController::class, 'update'])->name('employes.update');
+    Route::put('/employes/{id}', [EmployeController::class, 'update'])->name('employes.update');
     Route::delete('/employes/{id}', [EmployeController::class, 'destroy'])->name('employes.destroy');
 
-});
-
-
-Route::get('/documents/{filename}', [DocumentController::class, 'show'])->name('documents.show');
-
-Route::get("test", function(){
-    dd(Employe::find(4));
+    Route::get('/documents/{docsuuid}/{filename}', [DocumentController::class, 'show'])->name('documents.show');
 
 });
+
+
+
+
 
 
 require __DIR__.'/auth.php';

@@ -1,0 +1,1 @@
+<a href="{{ route('employes.create') }}"> <x-primary-button class="float-right">Nouveau</x-primary-button></a>

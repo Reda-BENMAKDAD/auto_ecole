@@ -4,8 +4,8 @@
             {{ __('Gérer les employés') }}
         </h2>
     </x-slot>
-    <div class="py-2">
-        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-20">
+    <div class="pb-8">
+        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-12">
             <h1 class="text-xl font-bold text-black dark:text-white">Informations de l'employé</h1>
             
             <form method="POST" action="{{ route('employes.store') }}" enctype="multipart/form-data">
@@ -39,8 +39,7 @@
 
                     <div>
                         <x-input-label for="num_tel" :value="__('Numéro de téléphone')" />
-                        <x-text-input id="num_tel" class="block mt-1 w-full" type="telephone" name="num_tel" :value="old('num_tel')" required autofocus autocomplete="lieu_naiss" />
-                        <x-input-error :messages="$errors->get('num_tel')" class="mt-2" />
+                        <x-text-input id="num_tel" class="block mt-1 w-full" type="text" name="num_tel" :value="old('num_tel')" required autofocus autocomplete="num_tel" />                        <x-input-error :messages="$errors->get('num_tel')" class="mt-2" />
                     </div>
 
                     <div>
@@ -122,8 +121,9 @@
                     
                 </div>
         
-                <div class="flex justify-end mt-6">
-                    <input type="submit" value="ajouter" class="px-6 py-2 leading-5 text-black transition-colors duration-200 transform bg-mygold rounded-md hover:bg-mygold-800 focus:outline-none focus:bg-mygold-800"/>
+                <div class="w-100 px-2 mt-6  flex justify-between">
+                    <x-annuler-button />
+                    <x-primary-button type="submit">ajouter</x-primary-button>
                 </div>
             </form>
         </section>

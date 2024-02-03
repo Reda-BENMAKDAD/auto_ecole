@@ -1,0 +1,1 @@
+<a href="{{ url()->previous() }}" class="float-right"> <x-primary-button type="button" class="">retour</x-primary-button></a>

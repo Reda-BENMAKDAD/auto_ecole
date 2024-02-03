@@ -1,42 +1,43 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __("Employé $employe->nom $employe->prenom") }}
+            {{$employe->sexe == "H" ? "Employé" : "Employée "}} {{"$employe->nom $employe->prenom" }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    <div class="p-12">
         <div class="rounded-lg bg-white max-w-7xl mx-auto sm:px-6 lg:px-8 p-10">
             <div class="px-4 sm:px-0">
-              <h3 class="font-semibold leading-7 text-xl text-gray-900">Informations de l'employé</h3>
+              <h3 class="font-bold leading-7 text-xl text-gray-900 inline-block">Informations de l'employé</h3>
+             <x-retour-button />
             </div>
             <div class="mt-6 border-t border-gray-100">
               <dl class="divide-y divide-gray-100">
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">nom complet</dt>
+                  <dt class="text-sm font-semibold leading-6 text-gray-900">nom complet</dt>
                   <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><span class="uppercase">{{ $employe->nom }} </span><span class="capitalize">{{ $employe->prenom}} </span></dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt class="text-sm font-medium leading-6 text-gray-900">Numéro CIN</dt>
+                    <dt class="text-sm font-semibold leading-6 text-gray-900">Numéro CIN</dt>
                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ "$employe->num_cin" }}</dd>
                   </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Post</dt>
+                  <dt class="text-sm font-semibold leading-6 text-gray-900">Post</dt>
                   <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $employe->poste }}</dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Email</dt>
+                  <dt class="text-sm font-semibold leading-6 text-gray-900">Email</dt>
                   <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $employe->email ? $employe->email : 'N/A' }}</dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Salaire</dt>
+                  <dt class="text-sm font-semibold leading-6 text-gray-900">Salaire</dt>
                   <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ "$employe->salaire dh" }}</dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Né a</dt>
+                  <dt class="text-sm font-semibold leading-6 text-gray-900">Né a</dt>
                   <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $employe->lieu_naiss }} <b class="text-base">Le</b> {{ $employe->date_naiss }}</dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Documents</dt>
+                  <dt class="text-sm font-semibold leading-6 text-gray-900">Documents</dt>
                   <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                     <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
                         <!-- document -->
@@ -52,7 +53,7 @@
                             </div>
                             </div>
                             <div class="ml-4 flex-shrink-0">
-                                <a href="{{ route('documents.show', ['filename' => $employe->scan_cv]) }}" class="font-medium text-mygold-800 hover:text-mygold-600">Voir</a>
+                                <a href="{{ route('documents.show', ['docsuuid' => $employe->docs_uuid,'filename', 'filename' => $employe->scan_cv]) }}" class="font-medium text-mygold-800 hover:text-mygold-600">Voir</a>
                             </div>
                         </li>
                       @endif
@@ -70,7 +71,7 @@
                                 </div>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
-                                    <a href="{{ route('documents.show', ['filename' => $employe->scan_cin])  }}" class="font-medium text-mygold-800 hover:text-mygold-600">Voir</a>
+                                    <a href="{{ route('documents.show', ['docsuuid' => $employe->docs_uuid,'filename', 'filename' => $employe->scan_cin])  }}" class="font-medium text-mygold-800 hover:text-mygold-600">Voir</a>
                                 </div>
                             </li>
                         @endif
@@ -85,7 +86,7 @@
                                 </div>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
-                                <a href="{{ route('documents.show', ['filename' => $employe->photo]) }}" class="font-medium text-mygold-800 hover:text-mygold-600">Voir</a>
+                                <a href="{{ route('documents.show', ['docsuuid' => $employe->docs_uuid,'filename' => $employe->photo,]) }}" class="font-medium text-mygold-800 hover:text-mygold-600">Voir</a>
                                 </div>
                             </li>
                         @endif
@@ -97,7 +98,20 @@
             </div>
           </div>
         </div>
-        <div class="py-12">
+        <div class="px-12 pb-12 pt-0 mt-0">
+          <div class="rounded-lg bg-white max-w-7xl mx-auto sm:px-6 lg:px-8 p-10">
+            <div class="px-4 pb-4 sm:px-0">
+              <h3 class="font-semibold leading-7 text-xl text-gray-900">Modifier les informations de l'employé</h3>
+            </div>
+            <a href="{{route('employes.edit', $employe->id)}}" >
+              <x-primary-button >
+                {{ 'Modifier' }}
+             </x-primary-button>
+          </a>
+          </div>
+        </div>
+
+        <div class="px-12 pb-12 pt-0 mt-0">
           <div class="rounded-lg bg-white max-w-7xl mx-auto sm:px-6 lg:px-8 p-10">
             <div class="px-4 pb-4 sm:px-0">
               <h3 class="font-semibold leading-7 text-xl text-gray-900">supprimer cet employé ?</h3>

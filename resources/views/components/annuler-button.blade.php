@@ -1,0 +1,1 @@
+<a href="{{ url()->previous() }}"><x-danger-button type="button">annuler</x-danger-button></a>

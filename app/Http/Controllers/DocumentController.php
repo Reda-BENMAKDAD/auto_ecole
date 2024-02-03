@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
-    public function show(string $filename)
+    public function show(string $docsuuid, string $filename)
     {
         
-        $filePath = storage_path("app\documents\\$filename");
-        if (!Storage::exists("documents\\$filename")) {
+        $filePath = storage_path("app\documents\\$docsuuid\\$filename");
+        if (!Storage::exists("documents\\$docsuuid\\$filename")) {
             abort(404);
         }
 

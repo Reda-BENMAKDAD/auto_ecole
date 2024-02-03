@@ -104,8 +104,9 @@ class EmployeController extends Controller
      */
     public function edit(string $id)
     {
+        $roles = Role::all();
         $employe = Employe::findOrFail($id);
-        return view('employe.edit', compact('employe'));
+        return view('employe.edit', compact('employe', 'roles'));
     }
 
     /**
