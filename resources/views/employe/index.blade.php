@@ -52,7 +52,7 @@
                                 <div class="text-left capitalize">{{ $employe->prenom }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
-                                <div class="text-left">{{ $employe->poste }}</div>
+                                <div class="text-left">{{ $employe->emposte->name }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="text-left">{{ $employe->email }}</div>

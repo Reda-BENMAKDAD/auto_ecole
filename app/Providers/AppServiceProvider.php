@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +44,15 @@ class AppServiceProvider extends ServiceProvider
     
         Blade::directive('endmoniteur', function () {
             return "<?php endif; ?>";
+        });
+
+        DB::listen(function ($query) {
+            // Log the SQL query and its bindings
+            Log::debug('SQL Query', [
+                'sql' => $query->sql,
+                'bindings' => $query->bindings,
+                'time' => $query->time,
+            ]);
         });
     }
 }

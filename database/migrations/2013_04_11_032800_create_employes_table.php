@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string("email")->nullable();
             $table->string("sexe");
             $table->float("salaire");
-            $table->string("poste");
+            $table->bigInteger("poste")->references("id")->on("roles")->onDelete("cascade")->onUpdate("cascade");
             $table->uuid('docs_uuid');
             $table->string("scan_cv")->nullable();
             $table->string("scan_cin")->nullable();

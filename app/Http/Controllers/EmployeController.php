@@ -19,7 +19,7 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        $employes = Employe::all();
+        $employes = Employe::orderBy('poste', 'asc')->orderBy('salaire', 'desc')->get();
         return view('employe.index', compact('employes'));
     }
    
@@ -36,7 +36,8 @@ class EmployeController extends Controller
     {
         /* création de l'employé */
         $EmployeInfo = $request->validated();
-        $EmployeInfo['poste'] = Role::findOrFail($EmployeInfo['poste'])->name; // on récupère le nom du poste avec son id à partir de la table des roles
+        // cette ligne n'est plus nécessaire comme maintenant c'est l'id du role qui est stocké dans la table employes
+        /* $EmployeInfo['poste'] = Role::findOrFail($EmployeInfo['poste'])->name; // on récupère le nom du poste avec son id à partir de la table des roles */
         $EmployeInfo['docs_uuid'] = (string) Str::uuid();
         $employe = Employe::create($EmployeInfo);
         
@@ -112,10 +113,12 @@ class EmployeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmployeRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
+        /* la modification des documents n'est pas encore gérée */
         $employe = Employe::findOrFail($id);
-        $employe->update($request->validated());
+        $employe->update($request->all());
+        $employe->save();
         return redirect()->route('employes.index');
     }
 

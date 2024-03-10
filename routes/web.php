@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:manager'])->group(function () {
-
+    /* Gestion Employes */
     Route::get('/employes', [EmployeController::class, 'index'])->name('employes.index');
     Route::get('/employes/create', [EmployeController::class, 'create'])->name('employes.create');
     Route::post('/employes/create', [EmployeController::class, 'store'])->name('employes.store');
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::get('/employes/{id}/edit', [EmployeController::class, 'edit'])->name('employes.edit');
     Route::put('/employes/{id}', [EmployeController::class, 'update'])->name('employes.update');
     Route::delete('/employes/{id}', [EmployeController::class, 'destroy'])->name('employes.destroy');
-
+    /* ------------- */
     Route::get('/documents/{docsuuid}/{filename}', [DocumentController::class, 'show'])->name('documents.show');
 
 });

@@ -33,7 +33,7 @@ class EmployeRequest extends FormRequest
         'email' => ['required', 'email', 'max:255'],
         'sexe' => ['required', 'string', 'max:1', 'in:H,F'],
         'salaire' => ['numeric', 'required'],
-        'poste' => ['required', 'numeric', 'max:255'],
+        'poste' => ['required', 'numeric'],
         'scan_cv' => ['nullable', 'file', 'mimes:pdf,doc,docx,odt,txt,png,jpg,jpeg'],
         'scan_cin' => ['nullable', 'file', 'mimes:pdf,doc,docx,odt,png,jpg,jpeg'],
         'photo' => ['nullable', 'file', 'mimes:jpg,jpeg,webp,gif,png'],

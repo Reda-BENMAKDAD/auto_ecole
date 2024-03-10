@@ -30,9 +30,9 @@ class Employe extends Model
     ];
     use HasFactory;
 
-    public function role()
+    public function emposte()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'poste');
     }
     public function payements()
     {

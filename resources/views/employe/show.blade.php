@@ -8,7 +8,7 @@
         <div class="rounded-lg bg-white max-w-7xl mx-auto sm:px-6 lg:px-8 p-10">
             <div class="px-4 sm:px-0">
               <h3 class="font-bold leading-7 text-xl text-gray-900 inline-block">Informations de l'employé</h3>
-             <x-retour-button />
+             <x-retour-button url='/employes' />
             </div>
             <div class="mt-6 border-t border-gray-100">
               <dl class="divide-y divide-gray-100">
@@ -22,7 +22,7 @@
                   </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-sm font-semibold leading-6 text-gray-900">Post</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $employe->poste }}</dd>
+                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $employe->emposte->name }}</dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-sm font-semibold leading-6 text-gray-900">Email</dt>

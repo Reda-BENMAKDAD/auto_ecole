@@ -7,8 +7,8 @@
     <div class="pb-8">
         <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-12">
             <h1 class="text-xl font-bold text-black dark:text-white">modification des informations de l'{{$employe->sexe == "H" ? "employé" : "employée "}} <span class="uppercase">{{"$employe->nom "}}</span><span class="capitalize">{{ $employe->prenom }}</span></h1>
-            
-            <form method="POST" action="{{ route('employes.update', ['id' => $employe->id]) }}" enctype="multipart/form-data">
+            <?php /* enctype="multipart/form-data" */ ?>
+            <form  action="{{ route('employes.update', ['id' => $employe->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 
@@ -85,7 +85,7 @@
                         <label class="text-black dark:text-gray-200" for="role">Poste</label>
                         <select id="poste" name="poste" class="block w-full text-gray-700  rounded-md border-gray-300 focus:border-mygold focus:ring-mygold shadow-sm">
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ $employe->poste== $role->name ? "selected" : null }}>{{ $role->name }}</option>
+                                <option value="{{ $role->id }}" {{ $employe->poste == $role->id ? "selected" : null }}>{{ $role->name }}</option>
                             @endforeach
                         </select>
                     </div>
